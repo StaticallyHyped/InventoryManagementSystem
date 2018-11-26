@@ -58,10 +58,10 @@ public class MainDocumentController {
     }
     private ObservableList<Product> productData = FXCollections.observableArrayList();
 
-    public MainDocumentController() {
+    /*public MainDocumentController() {
         this.partData.add(new Part("1", "Musterd", "test", "also test"));
         this.productData.add(new Product("1", "Musterd", "test", "also test"));
-    }
+    }*/
 
     @FXML
     private void initialize() {

@@ -24,7 +24,7 @@ public class Main extends Application {
         //doesn't throw an exception, uses try
 //        try {
             //getting into formatting - load the XML formatting doc
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("ModPartIn.fxml"));
 
             //creates a new anchorpane class instance called page
             AnchorPane page = (AnchorPane)loader.load();

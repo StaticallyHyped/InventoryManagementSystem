@@ -3,17 +3,23 @@ package software1;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+
 public class Part {
     private final StringProperty partID;
     private final StringProperty partName;
     private final StringProperty partInventory;
     private final StringProperty partPrice;
+    private final int minValue;
+    private final int maxValue;
 
-    public Part(String partID, String partName, String partInventory, String partPrice) {
+    public Part(String partID, String partName, String partInventory, String partPrice, int minValue, int maxValue) {
         this.partID = new SimpleStringProperty(partID);
         this.partName = new SimpleStringProperty(partName);
         this.partInventory = new SimpleStringProperty(partInventory);
         this.partPrice = new SimpleStringProperty(partPrice);
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+
     }
 
     public String getPartID() {
@@ -62,5 +68,13 @@ public class Part {
 
     public StringProperty partPriceProperty() {
         return this.partPrice;
+    }
+
+    public int getMinValue() {
+        return minValue;
+    }
+
+    public int getMaxValue() {
+        return maxValue;
     }
 }
