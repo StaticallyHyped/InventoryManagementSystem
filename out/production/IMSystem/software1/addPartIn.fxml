@@ -73,7 +73,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Button>
-            <TextField fx:id="addPartID" maxHeight="35.0" maxWidth="200.0" minHeight="20.0" minWidth="120.0" prefHeight="35.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <TextField fx:id="addPartID" onAction="#addPartIn" maxHeight="35.0" maxWidth="200.0" minHeight="20.0" minWidth="120.0" prefHeight="35.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>

@@ -4,7 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 
-public class Part {
+public abstract class Part {
     private final StringProperty partID;
     private final StringProperty partName;
     private final StringProperty partInventory;

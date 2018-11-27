@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane minWidth="232.0" prefHeight="553.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="software1.MainDocumentController">
     <children>
-        <TableView fx:id="partTable" layoutX="38.0" layoutY="94.0" prefHeight="305.0" prefWidth="422.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="154.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="498.0" AnchorPane.topAnchor="94.0">
+        <TableView fx:id="partTable" layoutX="38.0" layoutY="94.0" prefHeight="305.0" prefWidth="422.0" tableMenuButtonVisible="false">
             <columns>
                 <TableColumn fx:id="partIDColumn" maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Part ID" />
                 <TableColumn fx:id="partNameColumn" maxWidth="5000.0" minWidth="10.0" prefWidth="120.0" text="Part Name" />

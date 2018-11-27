@@ -25,16 +25,17 @@ public class MainDocumentController {
     @FXML
     private TextField partFilterField;
     @FXML
-    private TableView<Part> partTable;
+    private TableView<PartInhouse> partTable;
     @FXML
-    private TableColumn<Part, String> partIDColumn;
+    private TableColumn<PartInhouse, String> partIDColumn;
     @FXML
-    private TableColumn<Part, String> partNameColumn;
+    private TableColumn<PartInhouse, String> partNameColumn;
     @FXML
-    private TableColumn<Part, String> partInventoryColumn;
+    private TableColumn<PartInhouse, String> partInventoryColumn; //quantity in stock - need to update to an int
     @FXML
-    private TableColumn<Part, String> partPriceColumn;
-    private ObservableList<Part> partData = FXCollections.observableArrayList();
+    private TableColumn<PartInhouse, String> partPriceColumn;
+
+    private ObservableList<PartInhouse> partData = FXCollections.observableArrayList();
     @FXML
     private TextField productFilterField;
     @FXML
@@ -47,6 +48,7 @@ public class MainDocumentController {
     private TableColumn<Product, String> productInventoryColumn;
     @FXML
     private TableColumn<Product, String> productPriceColumn;
+
     @FXML
     private Button mainExitButton;
 
@@ -58,10 +60,17 @@ public class MainDocumentController {
     }
     private ObservableList<Product> productData = FXCollections.observableArrayList();
 
-    /*public MainDocumentController() {
-        this.partData.add(new Part("1", "Musterd", "test", "also test"));
+    PartInhouse lineOne = new PartInhouse("partid","partname", "partinventory", "partprice", 20,400,12);
+
+
+    public MainDocumentController() {
+
+
+        this.partData.add(new PartInhouse("test", "Musterd", "test", "also test", 1, 2,26));
+        this.partData.add(lineOne);
         this.productData.add(new Product("1", "Musterd", "test", "also test"));
-    }*/
+
+    }
 
     @FXML
     private void initialize() {
@@ -131,7 +140,7 @@ public class MainDocumentController {
                 }
             });
         });
-        SortedList<Part> sortedData = new SortedList(filteredPartData);
+        SortedList<PartInhouse> sortedData = new SortedList(filteredPartData);
         sortedData.comparatorProperty().bind(this.partTable.comparatorProperty());
         this.partTable.setItems(sortedData);
         SortedList<Product> productData = new SortedList(filteredProductData);
