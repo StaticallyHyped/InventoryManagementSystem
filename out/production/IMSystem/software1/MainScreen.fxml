@@ -66,8 +66,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="mainAddPartButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="12.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#initialize" onMouseEntered="#initialize" onMouseExited="#initialize" prefHeight="40.0" prefWidth="79.0" text="Add" GridPane.halignment="CENTER" />
-            <Button fx:id="mainModPartButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="12.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="Modify" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Button fx:id="mainAddPartButton" onAction="#goToAddPart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="12.0" minWidth="-Infinity" mnemonicParsing="false" onMouseEntered="#initialize" onMouseExited="#initialize" prefHeight="40.0" prefWidth="79.0" text="Add" GridPane.halignment="CENTER" />
+            <Button fx:id="mainModPartButton" onAction="#goToModPart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="12.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="Modify" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
             <Button fx:id="mainDeletePartButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="12.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
@@ -82,8 +82,8 @@
          </rowConstraints>
          <children>
             <Button fx:id="mainDeleteProductButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="12.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-            <Button fx:id="mainModProductButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="12.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="Modify" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-            <Button fx:id="mainAddProductButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="12.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="Add" GridPane.halignment="CENTER" />
+            <Button fx:id="mainModProductButton" onAction="#goToModProd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="12.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="Modify" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Button fx:id="mainAddProductButton" onAction="#goToAddProd" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="12.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="Add" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
       <Button fx:id="mainExitButton" layoutX="774.0" layoutY="490.0" mnemonicParsing="false" onAction="#exitMain" prefHeight="34.0" prefWidth="152.0" text="Exit" />

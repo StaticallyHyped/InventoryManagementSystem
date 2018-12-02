@@ -5,10 +5,14 @@
 
 package software1;
 
+import java.io.IOException;
 import java.util.function.Predicate;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,10 +52,68 @@ public class MainDocumentController {
     private TableColumn<Product, String> productInventoryColumn;
     @FXML
     private TableColumn<Product, String> productPriceColumn;
-
+    @FXML
+    private Button mainModPartButton;
     @FXML
     private Button mainExitButton;
+    @FXML
+    private Button mainAddPartButton;
+    @FXML
+    private Button mainAddProductButton;
+    @FXML
+    private Button mainModProductButton;
 
+//    @FXML
+//    private Button modPartInCancel;
+
+    @FXML
+    private void goToAddPart(ActionEvent event) throws IOException {
+        Stage stage = (Stage) mainAddPartButton.getScene().getWindow();
+
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("addPartIn.fxml"));
+        AnchorPane page = loader.load();
+        Scene scene = new Scene(page);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    private void goToModPart(ActionEvent event) throws IOException {
+        Stage stage = (Stage) mainModPartButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("ModPartIn.fxml"));
+        AnchorPane page = loader.load();
+        Scene scene = new Scene(page);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    private void goToAddProd(ActionEvent event) throws IOException {
+        Stage stage = (Stage) mainAddProductButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("AddProd.fxml"));
+        AnchorPane page = loader.load();
+        Scene scene = new Scene(page);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    private void goToModProd(ActionEvent event) throws IOException {
+        Stage stage = (Stage) mainModProductButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("ModProd.fxml"));
+        AnchorPane page = loader.load();
+        Scene scene = new Scene(page);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+//    @FXML
+//    private void modPartInBackToMain(ActionEvent event) throws IOException {
+//        System.out.println("Test 1 2, test 1 2");
+//        Stage stage = (Stage) modPartInCancel.getScene().getWindow();
+//        FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
+//        AnchorPane page = loader.load();
+//        Scene scene = new Scene(page);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
 
     @FXML
     private void exitMain(ActionEvent event){
