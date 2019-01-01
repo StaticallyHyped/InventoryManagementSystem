@@ -6,8 +6,18 @@
 package software1;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.function.Predicate;
+
+import javafx.fxml.Initializable;
+import software1.Inventory;
+import software1.PartInhouse;
+import software1.PartController;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,19 +37,17 @@ import javafx.util.Callback;
 
 public class MainDocumentController {
     @FXML
-    private TextField partFilterField;
+    public TextField partFilterField;
     @FXML
-    private TableView<PartInhouse> partTable;
+    public TableView<PartInhouse> partTable;
     @FXML
     private TableColumn<PartInhouse, String> partIDColumn;
     @FXML
     private TableColumn<PartInhouse, String> partNameColumn;
     @FXML
-    private TableColumn<PartInhouse, String> partInventoryColumn; //quantity in stock - need to update to an int
+    private TableColumn<PartInhouse, Number> partInventoryColumn; //quantity in stock - need to update to an int
     @FXML
-    private TableColumn<PartInhouse, String> partPriceColumn;
-
-    private ObservableList<PartInhouse> partData = FXCollections.observableArrayList();
+    private TableColumn<PartInhouse, Number> partPriceColumn;
     @FXML
     private TextField productFilterField;
     @FXML
@@ -62,14 +70,24 @@ public class MainDocumentController {
     private Button mainAddProductButton;
     @FXML
     private Button mainModProductButton;
+    @FXML
+    private Button addPartIn;
 
-//    @FXML
-//    private Button modPartInCancel;
+
+    public Inventory testTwo = new Inventory();
+    public PartController testThree = new PartController();
+    ObservableList<PartInhouse> partInventory = FXCollections.observableArrayList();
+
+
+    public MainDocumentController() {
+        //partInventory = testTwo.partData;
+//        addToPartInventory(partInventory);
+//        System.out.println("this is from inside the main doc controller");
+    }
 
     @FXML
     private void goToAddPart(ActionEvent event) throws IOException {
         Stage stage = (Stage) mainAddPartButton.getScene().getWindow();
-
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("addPartIn.fxml"));
         AnchorPane page = loader.load();
         Scene scene = new Scene(page);
@@ -104,49 +122,28 @@ public class MainDocumentController {
         stage.show();
     }
 
-//    @FXML
-//    private void modPartInBackToMain(ActionEvent event) throws IOException {
-//        System.out.println("Test 1 2, test 1 2");
-//        Stage stage = (Stage) modPartInCancel.getScene().getWindow();
-//        FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
-//        AnchorPane page = loader.load();
-//        Scene scene = new Scene(page);
-//        stage.setScene(scene);
-//        stage.show();
-//    }
-
     @FXML
     private void exitMain(ActionEvent event){
         Stage stage = (Stage) mainExitButton.getScene().getWindow();
         stage.close();
     }
-    private ObservableList<Product> productData = FXCollections.observableArrayList();
+    public ObservableList<Product> productData = FXCollections.observableArrayList();
 
-    PartInhouse lineOne = new PartInhouse("partid","partname", "partinventory", "partprice", 20,400,12);
-
-
-    public MainDocumentController() {
-
-
-        this.partData.add(new PartInhouse("test", "Musterd", "test", "also test", 1, 2,26));
-        this.partData.add(lineOne);
-        this.productData.add(new Product("1", "Musterd", "test", "also test"));
-
-    }
 
     @FXML
-    private void initialize() {
+    public void initialize() {
+
         this.partIDColumn.setCellValueFactory((cellData) -> {
-            return ((Part)cellData.getValue()).partIDProperty();
+            return (cellData.getValue()).partIDProperty();
         });
         this.partNameColumn.setCellValueFactory((cellData) -> {
-            return ((Part)cellData.getValue()).partNameProperty();
+            return (cellData.getValue()).partNameProperty();
         });
         this.partInventoryColumn.setCellValueFactory((cellData) -> {
-            return ((Part)cellData.getValue()).partInventoryProperty();
+            return (cellData.getValue()).partInventoryProperty();
         });
         this.partPriceColumn.setCellValueFactory((cellData) -> {
-            return ((Part)cellData.getValue()).partPriceProperty();
+            return (cellData.getValue()).partPriceProperty();
         });
         this.productIDColumn.setCellValueFactory((cellData) -> {
             return ((Product)cellData.getValue()).productIDProperty();
@@ -160,21 +157,23 @@ public class MainDocumentController {
         this.productPriceColumn.setCellValueFactory((cellData) -> {
             return ((Product)cellData.getValue()).productPriceProperty();
         });
-        FilteredList<Part> filteredPartData = new FilteredList(this.partData, (p) -> {
+        FilteredList<Part> filteredPartData = new FilteredList(partInventory, (p) -> {
             return true;
         });
         this.partFilterField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredPartData.setPredicate((part) -> {
                 if (newValue != null && !newValue.isEmpty()) {
+                    int partInv = part.getPartInventory();
+                    double partPrice = part.getPartInventory();
                     String lowerCaseFilter = newValue.toLowerCase();
                     if (part.getPartID().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
                     } else if (part.getPartName().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (part.getPartInventory().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (String.valueOf(partInv).toLowerCase().contains(lowerCaseFilter)) {
                         return true;
                     } else {
-                        return part.getPartPrice().toLowerCase().contains(lowerCaseFilter);
+                        return (String.valueOf(partPrice).toLowerCase().contains(lowerCaseFilter));
                     }
                 } else {
                     return true;
@@ -208,5 +207,31 @@ public class MainDocumentController {
         SortedList<Product> productData = new SortedList(filteredProductData);
         productData.comparatorProperty().bind(this.productTable.comparatorProperty());
         this.productTable.setItems(productData);
+
+    /*    partTable.setItems(updatePartInfo());*/
+        //partTable.setItems(testThree.addPartSubmit());
     }
+
+
+    /*public ObservableList<PartInhouse> updatePartInfo(){
+
+        partInventory.add(new PartInhouse("25", "bolt", 23, 67,
+                123, 23, "ID Number"));
+       // partInventory.add(testTwo.acceptPart());
+        return partInventory;
+    }
+*/
+    @FXML
+    public void deleteSelected(ActionEvent event){
+        partInventory.removeAll(partTable.getSelectionModel().getSelectedItems());
+        System.out.println("Test 123");
+    }
+
+    @FXML
+    public void deleteSelectedProduct(ActionEvent event){
+        productData.removeAll(productTable.getSelectionModel().getSelectedItems());
+        System.out.println("Test 123");
+    }
+
+
 }

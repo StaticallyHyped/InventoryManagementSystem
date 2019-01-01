@@ -1,27 +1,28 @@
 package software1;
 
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.beans.property.IntegerProperty;
 
-public class PartInhouse extends Part{
-    public PartInhouse(String partID, String partName, String partInventory, String partPrice, int minValue, int maxValue, int machineID) {
+public class PartInhouse extends Part {
+
+//    private String partID;
+//    private String partName;
+//    private int partInventory;
+//    private double partPrice;
+    private String machineID;
+//    private int minValue;
+//    private int maxValue;
+
+    public PartInhouse(String partID, String partName, int partInventory, double partPrice, int minValue, int maxValue, String machineID) {
         super(partID, partName, partInventory, partPrice, minValue, maxValue);
+        this.machineID = machineID;
+//        this.partID = partID;
+//        this.maxValue = maxValue;
+//        this.minValue = minValue;
+//        this.partName = partName;
+//        this.partInventory = partInventory;
+//        this.partPrice = partPrice;
 
-    }
-    @FXML
-    private TextField machineID;
-
-    @FXML
-    private TextField partID;
-
-    public void setMachineID(int machineID){
-
-    }
-
-    public int getMachineID(){
-
-        return 0;
     }
 
 }

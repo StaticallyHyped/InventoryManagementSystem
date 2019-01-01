@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -16,18 +17,7 @@ import java.io.IOException;
 
 public class PartController {
 
-    @FXML
-    private TextField addPartID;
-    @FXML
-    private TextField addPartName;
-    @FXML
-    private TextField addPartMin;
-    @FXML
-    private TextField addPartMax;
-    @FXML
-    private TextField addPartQuantity;
-    @FXML
-    private TextField addPartPrice;
+
     @FXML
     private Button modPartInCancel;
     @FXML
@@ -48,6 +38,36 @@ public class PartController {
     private RadioButton goToModPartInButton;
     @FXML
     private Button modPartOutCancel;
+    @FXML
+    private TextField addPartID;
+    @FXML
+    private TextField addPartName;
+    @FXML
+    private TextField addPartQuantity;
+    @FXML
+    private TextField addPartMachineID;
+    @FXML
+    private TextField addPartPrice;
+    @FXML
+    private TextField addPartMin;
+    @FXML
+    private TextField addPartMax;
+    @FXML
+    private Button saveButton;
+    @FXML
+    public String partID;
+    @FXML
+    public String partName;
+    @FXML
+    public String partQuantity;
+    @FXML
+    public String partPrice;
+    @FXML
+    public String partMin;
+    @FXML
+    public String partMax;
+    @FXML
+    public String partMachineID;
 
 
     @FXML
@@ -153,9 +173,22 @@ public class PartController {
     public void setAddPartID(TextField addPartID) {
         this.addPartID = addPartID;
     }
-    @FXML
-    public void setAddPartInfoIn(){
 
+
+
+    public PartInhouse addPartSubmit(ActionEvent event){
+        partID = addPartID.getText();
+        partName = addPartName.getText();
+        partQuantity = addPartQuantity.getText();
+        partMachineID = addPartMachineID.getText();
+        partPrice = addPartPrice.getText();
+        partMin = addPartMin.getText();
+        partMax = addPartMax.getText();
+        System.out.println(partID + ", part name" + partName );
+//        addPart = (partID, partName, Integer.parseInt(partQuantity), (Double.parseDouble(partPrice)), Integer.parseInt(partMin), Integer.parseInt(partMax), partMachineID);
+        PartInhouse addPart = new PartInhouse((partID), (partName), Integer.parseInt(partQuantity), (Double.parseDouble(partPrice)), Integer.parseInt(partMin), Integer.parseInt(partMax), partMachineID);
+        return addPart;
     }
+
 
 }

@@ -1,29 +1,28 @@
 package software1;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 
 public abstract class Part {
-    private final StringProperty partID;
-    private final StringProperty partName;
-    private final StringProperty partInventory;
-    private final StringProperty partPrice;
-    private final int minValue;
-    private final int maxValue;
+    private StringProperty partID;
+    private StringProperty partName;
+    private IntegerProperty partInventory;
+    private DoubleProperty partPrice;
+    private int minValue;
+    private int maxValue;
 
-    public Part(String partID, String partName, String partInventory, String partPrice, int minValue, int maxValue) {
+    public Part(String partID, String partName, int partInventory, double partPrice, int minValue, int maxValue) {
         this.partID = new SimpleStringProperty(partID);
         this.partName = new SimpleStringProperty(partName);
-        this.partInventory = new SimpleStringProperty(partInventory);
-        this.partPrice = new SimpleStringProperty(partPrice);
+        this.partInventory = new SimpleIntegerProperty(partInventory);
+        this.partPrice = new SimpleDoubleProperty(partPrice);
         this.minValue = minValue;
         this.maxValue = maxValue;
 
     }
 
     public String getPartID() {
-        return (String)this.partID.get();
+        return this.partID.get();
     }
 
     public void setPartID(String partID) {
@@ -35,7 +34,7 @@ public abstract class Part {
     }
 
     public String getPartName() {
-        return (String)this.partName.get();
+        return this.partName.get();
     }
 
     public void setPartName(String partName) {
@@ -46,27 +45,27 @@ public abstract class Part {
         return this.partName;
     }
 
-    public String getPartInventory() {
-        return (String)this.partInventory.get();
+    public int getPartInventory() {
+        return this.partInventory.get();
     }
 
-    public void setPartInventory(String partInventory) {
+    public void setPartInventory(int partInventory) {
         this.partInventory.set(partInventory);
     }
 
-    public StringProperty partInventoryProperty() {
+    public IntegerProperty partInventoryProperty() {
         return this.partInventory;
     }
 
-    public String getPartPrice() {
-        return (String)this.partPrice.get();
+    public double getPartPrice() {
+        return this.partPrice.get();
     }
 
-    public void setPartPrice(String partPrice) {
+    public void setPartPrice(double partPrice) {
         this.partPrice.set(partPrice);
     }
 
-    public StringProperty partPriceProperty() {
+    public DoubleProperty partPriceProperty() {
         return this.partPrice;
     }
 

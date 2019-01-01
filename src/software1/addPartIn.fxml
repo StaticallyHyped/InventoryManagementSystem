@@ -71,7 +71,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="saveButton" mnemonicParsing="false" text="Save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+            <Button fx:id="saveButton" onAction="#addPartSubmit" mnemonicParsing="false" text="Save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
             <Button fx:id="addPartInCancel" mnemonicParsing="false" onAction="#addPartInBackToMain" text="Cancel" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets left="20.0" />
@@ -98,7 +98,7 @@
                   <Insets left="15.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="addPartCompanyName" layoutX="175.0" layoutY="105.0" maxHeight="35.0" maxWidth="200.0" minHeight="20.0" minWidth="120.0" prefHeight="35.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+            <TextField fx:id="addPartMachineID" layoutX="175.0" layoutY="105.0" maxHeight="35.0" maxWidth="200.0" minHeight="20.0" minWidth="120.0" prefHeight="35.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6">
                <padding>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </padding>
