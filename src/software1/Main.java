@@ -1,62 +1,39 @@
 package software1;
 
-import java.io.IOException;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 
 
 public class Main extends Application {
+    public ObservableList test =  FXCollections.observableArrayList();
     public Main() {
+        //Experimental dummy data
 
+        /*Inventory.getPartData().add(new PartInhouse(1, "truss", 10, 14, 1, 2, 26));
+        Inventory.getPartData().add(new PartInhouse(2, "shear", 16, 14, 1, 2, 26));
+        Inventory.getPartData().add(new PartInhouse(3, "partnametest", 10, 14, 1, 2, 56));*/
+
+        Inventory.getProductData().add(new Product(1, "test two", 10, 34, 10, 10, (test)));
     }
     Stage window;
 
     public void start(Stage primaryStage) throws Exception{
+
         window = primaryStage;
-        //window.setTitle("Parts and Products Home");
+        window.setTitle("Parts and Products Home");
         Parent root = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
-        //FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
-
-            //creates a new anchorpane class instance called page
-         //   AnchorPane page = loader.load();
-
-            //creates a new Scene instance called scene
             Scene scene = new Scene(root);
-
             window.setScene(scene);
             window.show();
-           /* window.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent windowEvent) {
-                    Platform.exit();
-                }
-            });*/
-//        } catch (IOException var5) {
-//            var5.printStackTrace();
-//        }
-//        FXMLLoader loadModPartIn = new FXMLLoader(Main.class.getResource("ModPartIn.fxml"));
-//        AnchorPane modPartInPage = (AnchorPane)loadModPartIn.load();
-
-
-
-
     }
 
     public static void main(String[] args) {
         launch(args);
-
     }
 }

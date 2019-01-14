@@ -1,21 +1,21 @@
 package software1;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PartController {
+public class PartController implements Initializable {
 
 
     @FXML
@@ -23,23 +23,7 @@ public class PartController {
     @FXML
     private Button addPartInCancel;
     @FXML
-    private Button addProductCancel;
-    @FXML
-    private Button modProductCancel;
-    @FXML
-    private RadioButton goToAddPartOutButton;
-    @FXML
-    private RadioButton goToAddPartInButton;
-    @FXML
-    private Button addPartOutCancel;
-    @FXML
-    private RadioButton goToModPartOutButton;
-    @FXML
-    private RadioButton goToModPartInButton;
-    @FXML
-    private Button modPartOutCancel;
-    @FXML
-    private TextField addPartID;
+    public TextField addPartID;
     @FXML
     private TextField addPartName;
     @FXML
@@ -52,8 +36,6 @@ public class PartController {
     private TextField addPartMin;
     @FXML
     private TextField addPartMax;
-    @FXML
-    private Button saveButton;
     @FXML
     public String partID;
     @FXML
@@ -69,126 +51,184 @@ public class PartController {
     @FXML
     public String partMachineID;
 
+    //Begin modPartInHouse declarations
+    @FXML
+    public TextField modPartInH_ID;
+    @FXML
+    public TextField modPartInH_name;
+    @FXML
+    public TextField modPartInH_Inventory;
+    @FXML
+    public TextField modPartInH_price;
+    @FXML
+    public TextField modPartInH_max;
+    @FXML
+    public TextField modPartInH_min;
+    @FXML
+    public TextField modPartInH_MachID;
+    @FXML
+    public String modPartName;
+    @FXML
+    public int modPartID;
+    @FXML
+    public int modPartInventory;
+    @FXML
+    public int modPartMin;
+    @FXML
+    public int modPartMax;
+    @FXML
+    public double modPartPrice;
+    @FXML
+    public String modPartMachID;
+    @FXML
+    public Label labelMachOrCompany;
+    @FXML
+    public Label modPartLabel;
+    @FXML
+    public Label addPartMachIDOrCompanyLabel;
+    @FXML
+    public Label addPartLabel;
+    @FXML
+    public RadioButton addPartInRB;
+    @FXML
+    public RadioButton addPartOutRB;
+    @FXML
+    public RadioButton goToModPartInButton;
+    @FXML
+    public RadioButton goToModPartOutButton;
+
+
+    Part modPart;
+    public PartController(){
+
+    }
 
     @FXML
     private void modPartInBackToMain(ActionEvent event) throws IOException{
 
         Stage stage = (Stage) modPartInCancel.getScene().getWindow();
-
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
         AnchorPane page = loader.load();
         Scene scene = new Scene(page);
         stage.setScene(scene);
         stage.show();
+
     }
     @FXML
     private void addPartInBackToMain(ActionEvent event) throws IOException{
 
         Stage stage = (Stage) addPartInCancel.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
-        AnchorPane page = loader.load();
-        Scene scene = new Scene(page);
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    private void addProductBackToMain(ActionEvent event) throws IOException{
-
-        Stage stage = (Stage) addProductCancel.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
-        AnchorPane page = loader.load();
-        Scene scene = new Scene(page);
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    private void modProductBackToMain(ActionEvent event) throws IOException{
-
-        Stage stage = (Stage) modProductCancel.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
-        AnchorPane page = loader.load();
-        Scene scene = new Scene(page);
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    private void goToAddPartOutsourced(ActionEvent event) throws IOException{
-
-        Stage stage = (Stage) goToAddPartOutButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("addPartOut.fxml"));
-        AnchorPane page = loader.load();
-        Scene scene = new Scene(page);
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    private void goToAddPartIn(ActionEvent event) throws IOException{
-
-        Stage stage = (Stage) goToAddPartInButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("addPartIn.fxml"));
-        AnchorPane page = loader.load();
-        Scene scene = new Scene(page);
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    private void addPartOutBackToMain(ActionEvent event) throws IOException{
-
-        Stage stage = (Stage) addPartOutCancel.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
-        AnchorPane page = loader.load();
-        Scene scene = new Scene(page);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
+        Parent root = (Parent) loader.load();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
     @FXML
     private void goToModPartOutsourced(ActionEvent event) throws IOException{
-
-        Stage stage = (Stage) goToModPartOutButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("ModPartOut.fxml"));
-        AnchorPane page = loader.load();
-        Scene scene = new Scene(page);
-        stage.setScene(scene);
-        stage.show();
+        labelMachOrCompany.setText("Company Name");
+        modPartLabel.setText("Modify Outsourced Part");
     }
     @FXML
     private void goToModPartIn(ActionEvent event) throws IOException{
-        Stage stage = (Stage) goToModPartInButton.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("ModPartIn.fxml"));
-        AnchorPane page = loader.load();
-        Scene scene = new Scene(page);
-        stage.setScene(scene);
-        stage.show();
+        labelMachOrCompany.setText("Machine ID");
+        modPartLabel.setText("Modify In-House Part");
     }
     @FXML
-    private void modPartOutBackToMain(ActionEvent event) throws IOException{
-
-        Stage stage = (Stage) modPartOutCancel.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainScreen.fxml"));
-        AnchorPane page = loader.load();
-        Scene scene = new Scene(page);
-        stage.setScene(scene);
-        stage.show();
+    private void addPartIn(ActionEvent event) throws IOException{
+        addPartMachIDOrCompanyLabel.setText("Machine ID");
+        addPartLabel.setText("Add In-House Part");
     }
-    public void setAddPartID(TextField addPartID) {
-        this.addPartID = addPartID;
+    @FXML
+    private void addPartOut(ActionEvent event) throws IOException{
+        addPartMachIDOrCompanyLabel.setText("Company Name");
+        addPartLabel.setText("Add Outsourced Part");
+    }
+    Inventory test = new Inventory();
+    Part addPart;
+
+    public void addPartSubmit(ActionEvent event){
+
+        try {
+            partID = addPartID.getText();
+            partName = addPartName.getText();
+            partQuantity = addPartQuantity.getText();
+            partMachineID = addPartMachineID.getText();
+            partPrice = addPartPrice.getText();
+            partMin = addPartMin.getText();
+            partMax = addPartMax.getText();
+
+            //If RB1 = selected, addPart = new PartInHouse
+            if(addPartInRB.isSelected()) {
+                addPart = new PartInhouse(Integer.parseInt(partID), partName, Integer.parseInt(partQuantity), (Double.parseDouble(partPrice)), Integer.parseInt(partMin),
+                        Integer.parseInt(partMax), Integer.parseInt(partMachineID));
+            } //else addPart = new PartOut
+            else {addPart = new PartOut(Integer.parseInt(partID), partName, Integer.parseInt(partQuantity), (Double.parseDouble(partPrice)), Integer.parseInt(partMin),
+                    Integer.parseInt(partMax), partMachineID);
+            }
+
+            test.partData.add(addPart);
+
+        }catch(Exception e) {
+            System.out.println("You have entered an invalid value. Please enter a valid value.");
+        }
+    }
+    public void modPartSubmit(ActionEvent event){
+        try {
+            partID = modPartInH_ID.getText();
+            partName = modPartInH_name.getText();
+            partQuantity = modPartInH_Inventory.getText();
+            partMachineID = modPartInH_MachID.getText();
+            partPrice = modPartInH_price.getText();
+            partMin = modPartInH_min.getText();
+            partMax = modPartInH_max.getText();
+            if(goToModPartInButton.isSelected()) {
+                modPart = new PartInhouse(Integer.parseInt(partID), partName, Integer.parseInt(partQuantity), (Double.parseDouble(partPrice)), Integer.parseInt(partMin),
+                        Integer.parseInt(partMax), Integer.parseInt(partMachineID));
+            } //else addPart = new PartOut
+            else {
+                modPart = new PartOut(Integer.parseInt(partID), partName, Integer.parseInt(partQuantity), (Double.parseDouble(partPrice)), Integer.parseInt(partMin),
+                    Integer.parseInt(partMax), partMachineID);
+            }
+            test.partData.set(test.partData.indexOf(addPart), modPart);
+
+        }catch(Exception e) {
+
+            System.out.println("You have entered an invalid value. Please enter a valid value.");
+        }
     }
 
+    public void initialize(URL url, ResourceBundle rb) {
 
-
-    public PartInhouse addPartSubmit(ActionEvent event){
-        partID = addPartID.getText();
-        partName = addPartName.getText();
-        partQuantity = addPartQuantity.getText();
-        partMachineID = addPartMachineID.getText();
-        partPrice = addPartPrice.getText();
-        partMin = addPartMin.getText();
-        partMax = addPartMax.getText();
-        System.out.println(partID + ", part name" + partName );
-//        addPart = (partID, partName, Integer.parseInt(partQuantity), (Double.parseDouble(partPrice)), Integer.parseInt(partMin), Integer.parseInt(partMax), partMachineID);
-        PartInhouse addPart = new PartInhouse((partID), (partName), Integer.parseInt(partQuantity), (Double.parseDouble(partPrice)), Integer.parseInt(partMin), Integer.parseInt(partMax), partMachineID);
-        return addPart;
     }
 
+    public void modifySelectedPart(Part part) {
+        addPart = part;
+        if(part instanceof PartInhouse) {
+            PartInhouse partIn = (PartInhouse) part;
+            modPartMachID = Integer.toString(partIn.getMachineID());
+            labelMachOrCompany.setText("Machine ID");
+        }
+        else   {
+
+            goToModPartOutButton.setSelected(true);
+            PartOut partOut = (PartOut) part;
+            modPartMachID = partOut.getCompanyName();
+            labelMachOrCompany.setText("Company Name");
+        }
+            modPartName = part.getPartName();
+            modPartID = part.getPartID();
+            modPartInventory = part.getPartInventory();
+            modPartMin = part.getMinValue();
+            modPartMax = part.getMaxValue();
+            modPartPrice = part.getPartPrice();
+            modPartInH_name.setText(modPartName);
+            modPartInH_Inventory.setText(Integer.toString(modPartInventory));
+            modPartInH_ID.setText(Integer.toString(modPartID));
+            modPartInH_price.setText(Double.toString(modPartPrice));
+            modPartInH_max.setText(Integer.toString(modPartMax));
+            modPartInH_min.setText(Integer.toString(modPartMin));
+            modPartInH_MachID.setText(modPartMachID);
+    }
 
 }

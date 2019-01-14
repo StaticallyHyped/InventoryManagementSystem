@@ -4,15 +4,15 @@ import javafx.beans.property.*;
 
 
 public abstract class Part {
-    private StringProperty partID;
+    private IntegerProperty partID;
     private StringProperty partName;
     private IntegerProperty partInventory;
     private DoubleProperty partPrice;
     private int minValue;
     private int maxValue;
 
-    public Part(String partID, String partName, int partInventory, double partPrice, int minValue, int maxValue) {
-        this.partID = new SimpleStringProperty(partID);
+    public Part(int partID, String partName, int partInventory, double partPrice, int minValue, int maxValue) {
+        this.partID = new SimpleIntegerProperty(partID);
         this.partName = new SimpleStringProperty(partName);
         this.partInventory = new SimpleIntegerProperty(partInventory);
         this.partPrice = new SimpleDoubleProperty(partPrice);
@@ -21,15 +21,15 @@ public abstract class Part {
 
     }
 
-    public String getPartID() {
+    public int getPartID() {
         return this.partID.get();
     }
 
-    public void setPartID(String partID) {
+    public void setPartID(int partID) {
         this.partID.set(partID);
     }
 
-    public StringProperty partIDProperty() {
+    public IntegerProperty partIDProperty() {
         return this.partID;
     }
 
